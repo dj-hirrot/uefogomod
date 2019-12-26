@@ -1,28 +1,21 @@
 package main
 
 import(
-    "net/http"
     "github.com/labstack/echo"
 )
 
-type User struct {
-    ID int `json:"id"`
-    Name string `json:"name"`
-    Email string `json:"email"`
-}
-
 func main() {
     e := echo.New()
-    e.GET("/", hello)
-    e.Logger.Fatal(e.Start(":1323"))
+
+    e.Use(middleware.Logger())
+    e.Use(middleware.Recover())
+
+    e.GET("/users", handler.ListUser)
+    e.GET("/users/:id", handler.GetUser)
+    e.POST("/users", handler.CreateUser)
+    e.PUT("/users/:id", handler.UpdateUser)
+    e.DELETE("/users/:id", handler.DeleteUser)
+
+    e.Logger.Fatal(e.Start(":1324"))
 }
 
-func hello(c echo.Context) error {
-    user := &User {
-        ID: 100,
-        Name: "sample user",
-        Email: "sample@test.com",
-    }
-
-    return c.JSON(http.StatusOK, user)
-}
