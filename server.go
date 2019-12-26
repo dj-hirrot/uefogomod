@@ -18,5 +18,11 @@ func main() {
 }
 
 func hello(c echo.Context) error {
-    return c.String(http.StatusOK, "Hello")
+    user := &User {
+        ID: 100,
+        Name: "sample user",
+        Email: "sample@test.com",
+    }
+
+    return c.JSON(http.StatusOK, user)
 }
