@@ -3,7 +3,7 @@ package handler
 import (
     "net/http"
     "github.com/labstack/echo"
-    "../model"
+    "uefogomod/model"
 )
 
 func CreateUser(c echo.Context) (err error) {

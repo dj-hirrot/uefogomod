@@ -4,7 +4,7 @@ import (
     "net/http"
     "strconv"
     "github.com/labstack/echo"
-     "../model"
+    "uefogomod/model"
 )
 
 func UpdateUser(c echo.Context) (err error) {

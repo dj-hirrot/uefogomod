@@ -1,11 +1,11 @@
 package handler
 
  import (
-     "log"
+    "log"
     "net/http"
     "strconv"
     "github.com/labstack/echo"
-    "../model"
+    "uefogomod/model"
 )
 
 func DeleteUser(c echo.Context) (err error) {
